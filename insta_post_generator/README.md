@@ -9,21 +9,21 @@ Install the requirements.txt
 ## Important modification required to run the tools properly:
 - in crewai>utilities>crew_json_encoder.py
 
-class CrewJSONEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, BaseModel):
-            return self._handle_pydantic_model(obj)
-        elif isinstance(obj, UUID) or isinstance(obj, Decimal):
-            return str(obj)
+        class CrewJSONEncoder(json.JSONEncoder):
+            def default(self, obj):
+                if isinstance(obj, BaseModel):
+                    return self._handle_pydantic_model(obj)
+                elif isinstance(obj, UUID) or isinstance(obj, Decimal):
+                    return str(obj)
 
-        elif isinstance(obj, datetime) or isinstance(obj, date):
-            return obj.isoformat()
+                elif isinstance(obj, datetime) or isinstance(obj, date):
+                    return obj.isoformat()
 
-        #this elif block needs to be added in the original function
-        elif  isinstance(obj,set):
-            return str(obj)
-        
-        return super().default(obj) 
+                #this elif block needs to be added in the original function
+                elif  isinstance(obj,set):
+                    return str(obj)
+                
+                return super().default(obj) 
 
 **Add your `OPENAI_API_KEY` and `SERPER_API_KEY` into the `.env` file**
 
