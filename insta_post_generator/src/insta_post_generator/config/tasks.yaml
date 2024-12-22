@@ -1,0 +1,63 @@
+info_gather:
+  description: >
+    This is the topuc you are working with: {topic}.
+    Extra details provided by the customer: {details}.
+
+    Search the internet to find the descriptive information 
+    about the topic:{topic} relevant to the details:{details}.
+
+    Your research should be able to create ideas for the final instagram posts.
+
+    Your final answer MUST be 10 points describing the {topic} in detail for further processes.
+
+  expected_output: >
+    A list of 10 pointers that describe {topic} in detail.
+  agent: Info_gathering_agent
+
+trend_search:
+  description: >
+    This is the topic you are working with: {topic}.Extra details provided by the customer: {details}.
+
+    Search the internet to find the trending news and informations 
+    about the topic:{topic} relevant to the details:{details}.
+
+    Your research should be able to create ideas for the final instagram posts.
+
+    Your final answer MUST be 10 points describing the trending news and informations about the topic: {topic}.
+  expected_output: >
+    A list of 10 pointers that describe the relevant current trends about {topic} in detail.
+  agent: Internet_trend_searcher
+
+instagram_post:
+  description: >
+    Craft an engaging Instagram post idea.
+    The idea should be punchy, captivating, concise,
+    and aligned with {topic} as per {details}.
+
+    Focus on creating a image that resonates with
+    the target audience and highlights the topic's important points.
+
+    Your idea must be descriptive and detailed.
+
+    Your final answer MUST be 3 options for a post for instagram, written
+    in detail describing the post image to the prompt generator, that
+    not only informs but also awares the audience.
+  expected_output: >
+    A list of three possible compelling Instagram post
+    ideas that highlights the topic and includes a clear call to action in one engaging sentence.
+    You must report the output in detail to the prompt engineer.
+  agent: Insta_post_Creator
+
+instagram_post_prompt:
+  description: >
+    Create the prompts to be passed on to DALLE AI to generate 
+    appropriate images that are relevant and as desceribed in the instagram post copy
+
+    Your aim is to write the prompts in detail enough to make the AI
+    understand and generate the exact image for the instagram post.
+
+    Your final answer MUST be 3 prompts for post copy to be passed into the AI.
+  expected_output: >
+    A list of three possible detailed prompts to generate Instagram post
+    using the post copy that highlights the topic and includes a clear call to action in one engaging sentence.
+  agent: Image_prompt_writer

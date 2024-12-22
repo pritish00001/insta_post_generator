@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}PannaLabs - Generate Images{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form id="generate-form" method="post">
+    <label for="topic">Your Topic</label>
+    <input type="text" name="topic" id="topic" required>
+    <label for="details">Details</label>
+    <input type="text" name="details" id="details" required>
+    <input type="submit" id="Generate" value="Generate">
+  </form>
+  <div class="loader-container" id="loader" style="display: none;">
+    <div class="loader"></div>
+  </div>
+{% if images %}
+<h2>Results:</h2>
+<div id="images">
+    {% for image in images %}
+        <img src="{{ image }}" alt="Generated Image">
+    {% endfor %}
+</div>
+{% endif %}
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+{% endblock %}
